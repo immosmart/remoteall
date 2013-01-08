@@ -15,7 +15,7 @@ If You need to do something after connection You can do it in callback where `co
         uniqueSessionId:'SecretStringForConnection',
         host:{
             protocol:'http',
-            domain:'dev.smart-kino.com',
+            domain:'remoteall.org',
             port:'8888'
         }
     }, function (context, args) {
