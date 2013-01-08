@@ -1,4 +1,4 @@
-var allRemote = function(params,connectCallback){
+var remoteAll = function(params,connectCallback){
     var self = this
     this.defaults = {
         appId: 'appNan',
