@@ -1,0 +1,4 @@
+allremote
+=========
+
+@see example.html

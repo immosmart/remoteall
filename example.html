@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="./css/allremote.css" />
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="./js/allremote.js"></script>
+<script src="http://dev.smart-kino.com:8888/socket.io/socket.io.js"></script>
+<script>
+
+    // (1) You need to connect to @allremote service in
+    var ar = new allRemote({
+        appId:'appNan',
+        uniqueSessionId:'SecretStringForConnection',
+        host:{
+            protocol:'http',
+            domain:'dev.smart-kino.com',
+            port:'8888'
+        }
+    }, function (context, args) {
+        // (2) If You need to do something after connection
+        console.log('AR: connected');
+        $('form.sender').show();
+        $('.loader').hide();
+    });
+
+    //--------------------example 1-------------------------
+    // (3) We need to do something on @recive_code event
+    //    ar.on('recive_code',function(data){
+    //        console.log(data.code+data.index);
+    //    })
+
+    // (4) Now You can send any data throw @allremote service
+    //    ar.sendCode({code:'xxx_code',index:'2'});
+    //------------------------------------------------------
+
+    //--------------------example 2-------------------------
+    var profiler = null;
+    $(document).ready(function () {
+        $('form.sender').submit(function () {
+            profiler = new Date().getTime();
+            ar.sendCode($('.code_holder').val());
+            return false;
+        })
+    })
+    ar.on('recive_code', function (data) {
+        if(profiler){
+            var delay =  new Date().getTime() - profiler;
+            $('.delay_container').html('(DELAY: '+delay+' MILLISECONDS)');
+        }
+        $('.codes_container').html(data);
+    })
+    //------------------------------------------------------
+</script>
+<div class="loader">Connecting...</div>
+<form class="sender" style="display: none">
+    <input type="text" class="code_holder">
+    <button type="submit" class="button">SEND CODE</button> <br><br><br>
+    <span class="codes_container">HERE WILL BE CODE FROM SERVER</span> <br>
+    <span class="delay_container"></span>
+</form>
+
+
+
+</body>
+</html>
