@@ -50,8 +50,11 @@
     ra.on('recive_code', function (data) {
         if(profiler){
             var delay =  new Date().getTime() - profiler;
+			profiler = null;
             $('.delay_container').html('(DELAY: '+delay+' MILLISECONDS)');
-        }
+        }else{
+			$('.delay_container').html('');
+		}
         $('.codes_container').html(data);
     })
     //------------------------------------------------------
