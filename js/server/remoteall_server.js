@@ -1,36 +1,87 @@
+var REMOTE_ALL_SERVER_CONFIG = {
+    host:{
+        protocol:'http',
+        domain:'127.0.0.1',
+        port:'8888'
+    }
+}
+
 var app = require('http').createServer(handler)
-  , io = require('socket.io').listen(app)
-  , fs = require('fs')
+    , io = require('socket.io').listen(app)
+    , io_client = require('socket.io-client')
+    , fs = require('fs')
+    , qs = require('querystring')
 
-app.listen(80);
+app.listen(REMOTE_ALL_SERVER_CONFIG.host.port);
 
-function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
+function handler(req, res) {
+
+    if (req.url == '/emit') {
+
+
+        if (req.method == 'POST') {
+            var body = '';
+            req.on('data', function (data) {
+                body += data;
+            });
+            req.on('end', function () {
+
+                var POST = qs.parse(body);
+
+
+                var app = POST.app?POST.app:null;
+                var session_id = POST.session_id?POST.session_id:null;
+                var emit_data = POST.emit_data?POST.emit_data:null;
+
+                if(!app||!session_id||!emit_data){
+                    res.writeHead(400);
+                    res.end('Need all POST params app,session_id,emit_data');
+                }
+
+
+                if (!s_socket) {
+                    var s_socket = io_client.connect(REMOTE_ALL_SERVER_CONFIG.host.protocol + '://' + REMOTE_ALL_SERVER_CONFIG.host.domain + ':' + REMOTE_ALL_SERVER_CONFIG.host.port);
+                    s_socket.emit('set_session', app, session_id);
+                }
+
+                s_socket.emit('send_code', emit_data);
+
+                res.writeHead(200);
+                res.end('OK');
+
+
+            });
+        }
     }
 
-    res.writeHead(200);
-    res.end(data);
-  });
+
+    fs.readFile(__dirname + '/index.html',
+        function (err, data) {
+            if (err) {
+                res.writeHead(500);
+                return res.end('Error loading index.html');
+            }
+            res.writeHead(200);
+            res.end(data);
+        });
 }
 
 io.sockets.on('connection', function (socket) {
 
-  var app = 'share'
-  var session_id = 'share';
-  socket.join(app+'_'+session_id);
+    var app = 'share'
+    var session_id = 'share';
+    socket.join(app + '_' + session_id);
 
-  socket.on('set_session', function (_app,_session_id) {
-    socket.leave(app+'_'+session_id)
-    app = _app;
-    session_id = _session_id;
-    socket.join(app+'_'+session_id);
-  });
+    socket.on('set_session', function (_app, _session_id) {
+        socket.leave(app + '_' + session_id)
+        app = _app;
+        session_id = _session_id;
+        socket.join(app + '_' + session_id);
+    });
 
-  socket.on('send_code', function (data) {
-    io.sockets.in(app+'_'+session_id).emit('recive_code', data)
-  });
+    socket.on('send_code', function (data) {
+        io.sockets.in(app + '_' + session_id).emit('recive_code', data)
+    });
 });
+
+
