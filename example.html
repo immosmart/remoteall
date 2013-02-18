@@ -6,22 +6,20 @@
 
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="./css/allremote.css" />
+<link rel="stylesheet" type="text/css" href="./css/remoteall.css" />
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="./js/remoteall.js"></script>
-<script src="http://remoteall.org/socket.io/socket.io.js"></script>
+
+<!--CHECK socket.io.js SERVER-->
+<script src="./js/config.js"></script>
+<script src="http://dev.remoteall.com:8888/socket.io/socket.io.js"></script>
+
+
+
 <script>
 
     // (1) You need to connect to @allremote service in
-    var ra = new remoteAll({
-        appId:'appNan',
-        uniqueSessionId:'SecretStringForConnection',
-        host:{
-            protocol:'http',
-            domain:'remoteall.org',
-            port:'80'
-        }
-    }, function (context, args) {
+    var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
         // (2) If You need to do something after connection
         console.log('RA: connected');
         $('form.sender').show();
