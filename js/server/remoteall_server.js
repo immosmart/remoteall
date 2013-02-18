@@ -17,27 +17,21 @@ app.listen(REMOTE_ALL_SERVER_CONFIG.host.port);
 function handler(req, res) {
 
     if (req.url == '/emit') {
-
-
         if (req.method == 'POST') {
             var body = '';
             req.on('data', function (data) {
                 body += data;
             });
             req.on('end', function () {
-
                 var POST = qs.parse(body);
+                var app = POST.app ? POST.app : null;
+                var session_id = POST.session_id ? POST.session_id : null;
+                var emit_data = POST.emit_data ? POST.emit_data : null;
 
-
-                var app = POST.app?POST.app:null;
-                var session_id = POST.session_id?POST.session_id:null;
-                var emit_data = POST.emit_data?POST.emit_data:null;
-
-                if(!app||!session_id||!emit_data){
+                if (!app || !session_id || !emit_data) {
                     res.writeHead(400);
                     res.end('Need all POST params app,session_id,emit_data');
                 }
-
 
                 if (!s_socket) {
                     var s_socket = io_client.connect(REMOTE_ALL_SERVER_CONFIG.host.protocol + '://' + REMOTE_ALL_SERVER_CONFIG.host.domain + ':' + REMOTE_ALL_SERVER_CONFIG.host.port);
@@ -51,19 +45,26 @@ function handler(req, res) {
 
 
             });
+        } else {
+            res.writeHead(400);
+            res.end('Only POST requests');
         }
+    } else {
+        res.writeHead(404);
+        res.end('');
     }
 
 
-    fs.readFile(__dirname + '/index.html',
-        function (err, data) {
-            if (err) {
-                res.writeHead(500);
-                return res.end('Error loading index.html');
-            }
-            res.writeHead(200);
-            res.end(data);
-        });
+//    fs.readFile(__dirname + '/index.html',
+//        function (err, data) {
+//            if (err) {
+//                res.writeHead(500);
+//                return res.end('Error loading index.html');
+//            }
+//            res.writeHead(200);
+//            res.end(data);
+//        });
+
 }
 
 io.sockets.on('connection', function (socket) {
