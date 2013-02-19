@@ -34,7 +34,7 @@ function handler(req, res) {
 
                 try {
                     var emit_data_parsed = JSON.parse(emit_data);
-                } catch (e){
+                } catch (e) {
                     emit_data_parsed = emit_data;
                 }
                 if (!s_socket) {

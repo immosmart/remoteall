@@ -1,9 +1,9 @@
 var REMOTE_ALL_CONFIG = {
-    appId: 'appNan',
-    uniqueSessionId: 'SecretStringForConnection',
-    host: {
+    appId:'appNan',
+    uniqueSessionId:'SecretStringForConnection',
+    host:{
         protocol:'http',
-        domain: 'dev.remoteall.org',
-        port: '8888'
+        domain:'localhost',
+        port:'8888'
     }
 }

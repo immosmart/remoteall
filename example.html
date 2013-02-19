@@ -6,14 +6,13 @@
 
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="./css/remoteall.css" />
+<link rel="stylesheet" type="text/css" href="./css/remoteall.css"/>
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="./js/remoteall.js"></script>
 
 <!--CHECK socket.io.js SERVER-->
 <script src="./js/config.js"></script>
 <script src="http://localhost:8888/socket.io/socket.io.js"></script>
-
 
 
 <script>
@@ -46,13 +45,13 @@
         })
     })
     ra.on('recive_code', function (data) {
-        if(profiler){
-            var delay =  new Date().getTime() - profiler;
-			profiler = null;
-            $('.delay_container').html('(DELAY: '+delay+' MILLISECONDS)');
-        }else{
-			$('.delay_container').html('');
-		}
+        if (profiler) {
+            var delay = new Date().getTime() - profiler;
+            profiler = null;
+            $('.delay_container').html('(DELAY: ' + delay + ' MILLISECONDS)');
+        } else {
+            $('.delay_container').html('');
+        }
         $('.codes_container').html(data);
     })
     //------------------------------------------------------
@@ -60,11 +59,11 @@
 <div class="loader">Connecting...</div>
 <form class="sender" style="display: none">
     <input type="text" class="code_holder">
-    <button type="submit" class="button">SEND CODE</button> <br><br><br>
+    <button type="submit" class="button">SEND CODE</button>
+    <br><br><br>
     <span class="codes_container">HERE WILL BE CODE FROM SERVER</span> <br>
     <span class="delay_container"></span>
 </form>
-
 
 
 </body>

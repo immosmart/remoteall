@@ -1,20 +1,23 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: #e2f6ff;
     font-family: monospace;
 }
-form.sender,.loader{
+
+form.sender, .loader {
     margin: 100px auto 0;
     text-align: center;
     font-size: 20px;
 }
-input.code_holder{
+
+input.code_holder {
     border: solid 2px #6cbbff;
     font-size: 20px;
     padding: 5px;
 }
-button.button{
+
+button.button {
     border: solid 2px white;
     background: #6cbbff;
     color: white;
@@ -23,14 +26,17 @@ button.button{
     margin: 0;
 
 }
-button.button:hover{
+
+button.button:hover {
     border-color: #4aa7ff;
     cursor: pointer;
 }
-.codes_container{
+
+.codes_container {
     font-size: 20px;
     font-weight: bold;
 }
-.delay_container{
+
+.delay_container {
     color: gray;
 }
