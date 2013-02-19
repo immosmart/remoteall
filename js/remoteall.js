@@ -5,7 +5,7 @@ var remoteAll = function (params, connectCallback) {
         uniqueSessionId:'SecretStringForConnection',
         host:{
             protocol:'http',
-            domain:'remoteall.org',
+            domain:'localhost',
             port:'8888'
         }
     }
