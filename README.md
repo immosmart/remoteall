@@ -20,7 +20,7 @@ If You need to do something after connection You can do it in callback where `co
         // If You need to do something after connection
     });
 
-where `REMOTE_ALL_CONFIG` `%NODEJS_SERVER%` @see [config.example.js](https://github.com/immosmart/remoteall/blob/master/js/config.example.js)
+where `REMOTE_ALL_CONFIG` parts for `%NODEJS_SERVER%` @see [config.example.js](https://github.com/immosmart/remoteall/blob/master/js/config.example.js)
 
     var REMOTE_ALL_CONFIG = {
         appId: 'appNan',
