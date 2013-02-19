@@ -32,12 +32,17 @@ function handler(req, res) {
                     res.end('Need all POST params app,session_id,emit_data');
                 }
 
+                try {
+                    var emit_data_parsed = JSON.parse(emit_data);
+                } catch (e){
+                    emit_data_parsed = emit_data;
+                }
                 if (!s_socket) {
                     var s_socket = io_client.connect(REMOTE_ALL_SERVER_CONFIG.host.protocol + '://' + REMOTE_ALL_SERVER_CONFIG.host.domain + ':' + REMOTE_ALL_SERVER_CONFIG.host.port);
                     s_socket.emit('set_session', app, session_id);
                 }
 
-                s_socket.emit('send_code', emit_data);
+                s_socket.emit('send_code', emit_data_parsed);
 
                 res.writeHead(200);
                 res.end('OK');
