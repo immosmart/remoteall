@@ -1,6 +1,5 @@
 var REMOTE_ALL_SERVER_CONFIG = {
     host:{
-        protocol:'http',
         domain:'127.0.0.1',
         port:'8888'
     }
@@ -42,8 +41,6 @@ function handler(req, res) {
 
                 res.writeHead(200);
                 res.end('OK');
-
-
             });
         } else {
             res.writeHead(400);
