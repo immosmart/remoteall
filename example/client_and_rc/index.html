@@ -1,0 +1,107 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>client and rc - RemoteAll example</title>
+
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="./css/client_and_rc.css"/>
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="../../js/remoteall.js"></script>
+
+<!--CHECK socket.io.js SERVER-->
+<script src="http://localhost:8888/socket.io/socket.io.js"></script>
+
+
+<script>
+
+    var REMOTE_ALL_CONFIG = {
+        appId:'myApp',
+        uniqueSessionId:'SecretSession_Td%^&4ds',
+        host:{
+            protocol:'http',
+            domain:'localhost',
+            port:'8888'
+        }
+    }
+
+    var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
+        // do nothing
+    });
+    var timer = null;
+    ra.on('recive_code', function (data) {
+        var diff = 0;
+        var direction = null;
+        //console.log(data.event_name+' '+data.button_code);
+
+        switch (data.event_name) {
+            case 'button_down':
+                switch (data.button_code) {
+                    case 'DOWN':
+                    case 'RIGHT':
+                        diff = 3;
+                        break;
+                    case 'UP':
+                    case 'LEFT':
+                        diff = -3;
+                        break;
+                }
+
+                switch (data.button_code) {
+                    case 'DOWN':
+                    case 'UP':
+                        clearInterval(timer);
+                        timer = setInterval(function () {
+                            $('#square').offset({ top:$('#square').offset().top + diff})
+                        }, 100);
+                        break;
+                    case 'RIGHT':
+                    case 'LEFT':
+                        clearInterval(timer);
+                        timer = setInterval(function () {
+                            $('#square').offset({left:$('#square').offset().left + diff })
+                        }, 100);
+                        break;
+                }
+                break;
+            case 'button_up':
+
+                switch (data.button_code) {
+
+                    case 'DOWN':
+                    case 'RIGHT':
+                    case 'UP':
+                    case 'LEFT':
+                        if (timer)
+                            clearInterval(timer);
+                        break;
+                }
+
+                break;
+        }
+    })
+
+    $(document).ready(function () {
+        //JS RC ON
+        $('#turn_rc_on').click(function () {
+            window.open('rc/rc.html#js', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=136,height=160");
+            $('#description').hide('slow');
+            return false;
+        })
+
+        //POST RC ON
+        $('#turn_post_rc_on').click(function () {
+            window.open('rc/rc.html#post', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=136,height=160");
+            $('#description').hide('slow');
+            return false;
+        })
+    })
+
+</script>
+
+<div id="square"></div>
+<div id="description">Turn <a href="#" id="turn_rc_on">JS RC</a> or <a href="#" id="turn_post_rc_on">POST RC</a> on to
+    move this square &rarr; </div>
+</body>
+</html>

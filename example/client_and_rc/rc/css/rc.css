@@ -1,0 +1,86 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#rc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #000;
+    background: #393939;
+    height: 160px;
+    width: 136px;
+}
+
+.sel-key {
+    float: left;
+    width: 35px;
+    height: 43px;
+    background: url("../img/b_bg.png") no-repeat;
+    position: absolute;
+    left: -200px;
+    cursor: pointer;
+}
+
+.sel-key:hover {
+    background-position: 0 -49px;
+}
+
+.sel-key:hover .selk-image {
+    background-image: url("../img/b1_hover.png");
+}
+
+.selk-image {
+    background: url("../img/b1.png") no-repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 35px;
+    height: 43px;
+}
+
+#rc_key_UP {
+    left: 50px;
+    top: 10px;
+}
+
+.selk-image_UP {
+    background-position: -35px 9px;
+}
+
+#rc_key_LEFT {
+    left: 10px;
+    top: 58px;
+}
+
+.selk-image_LEFT {
+    background-position: 4px -37px;
+}
+
+#rc_key_ENTER {
+    left: 50px;
+    top: 58px;
+}
+
+.selk-image_ENTER {
+    background-position: -35px -37px;
+}
+
+#rc_key_RIGHT {
+    left: 90px;
+    top: 58px;
+}
+
+.selk-image_RIGHT {
+    background-position: -73px -37px;
+}
+
+#rc_key_DOWN {
+    left: 50px;
+    top: 106px;
+}
+
+.selk-image_DOWN {
+    background-position: -35px -86px;
+}

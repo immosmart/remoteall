@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RC - client and rc - RemoteAll example</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="../../../js/remoteall.js"></script>
+
+<!--CHECK socket.io.js SERVER-->
+<script src="http://localhost:8888/socket.io/socket.io.js"></script>
+
+<script>
+
+    var REMOTE_ALL_CONFIG = {
+        appId:'myApp',
+        uniqueSessionId:'SecretSession_Td%^&4ds',
+        host:{
+            protocol:'http',
+            domain:'localhost',
+            port:'8888'
+        }
+    }
+
+
+    if (window.location.hash == '#post') {
+        //POST RC----------------------------------------------
+        var data = null;
+        var req_url = REMOTE_ALL_CONFIG.host.protocol + '://' + REMOTE_ALL_CONFIG.host.domain + ':' + REMOTE_ALL_CONFIG.host.port + '/emit'
+
+        $(document).ready(function () {
+
+            var send_data = function (data) {
+                jQuery.post(
+                        req_url,
+                        {
+                            app:REMOTE_ALL_CONFIG.appId,
+                            session_id:REMOTE_ALL_CONFIG.uniqueSessionId,
+                            emit_data:JSON.stringify(data)
+                        }
+                )
+            }
+
+            $('.sel-key')
+                    .mousedown(function () { // send json data to server
+                        data = {event_name:'button_down', button_code:$(this).data('button-code')};
+                        send_data(data);
+                    })
+                    .mouseup(function () {
+                        data = {event_name:'button_up', button_code:$(this).data('button-code')};
+                        send_data(data);
+                    })
+        })
+    } else {
+        //JS RC----------------------------------------------
+        var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
+            // do nothing
+        });
+        $(document).ready(function () {
+            $('.sel-key')
+                    .mousedown(function () {
+                        ra.sendCode({event_name:'button_down', button_code:$(this).data('button-code')});
+                    })
+                    .mouseup(function () {
+                        ra.sendCode({event_name:'button_up', button_code:$(this).data('button-code')});
+                    })
+        })
+    }
+
+
+</script>
+<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+<div id="rc">
+    <div id="rc_key_RIGHT" class="sel-key" data-button-code="RIGHT">
+        <div class="selk-image selk-image_RIGHT"></div>
+    </div>
+    <div id="rc_key_LEFT" class="sel-key" data-button-code="LEFT">
+        <div class="selk-image selk-image_LEFT"></div>
+    </div>
+    <div id="rc_key_DOWN" class="sel-key" data-button-code="DOWN">
+        <div class="selk-image selk-image_DOWN"></div>
+    </div>
+    <div id="rc_key_UP" class="sel-key" data-button-code="UP">
+        <div class="selk-image selk-image_UP"></div>
+    </div>
+    <!--<div id="rc_key_ENTER" class="sel-key">-->
+    <!--<div class="selk-image selk-image_ENTER"></div>-->
+    <!--</div>-->
+</div>
+</body>
+</html>
