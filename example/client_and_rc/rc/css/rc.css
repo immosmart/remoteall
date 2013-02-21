@@ -2,22 +2,33 @@ html, body {
     margin: 0;
     padding: 0;
     background: #393939;
+    font-family: Arial;
 }
 
 #rc {
     position: absolute;
-    left: 0;
-    top: 0;
     color: #000;
     border: white solid 1px;
     height: 160px;
     width: 385px;
-    margin: auto;
-    background: #5d5d5d;
     left: 50%;
     top: 50%;
     margin-left: -192px;
     margin-top: -80px;
+    background: #5d5d5d;
+    display: none;
+}
+#io_loader{
+    position: absolute;
+    height: 160px;
+    width: 385px;
+    left: 50%;
+    top: 50%;
+    margin-left: -192px;
+    margin-top: -80px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .sel-key {

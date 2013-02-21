@@ -54,6 +54,9 @@
                 )
             }
 
+            $('#io_loader').hide();
+            $('#rc').show();
+
             $('.sel-key')
                     .mousedown(function () { // send json data to server
                         data = {event_name:'button_down', button_code:$(this).data('button-code')};
@@ -73,7 +76,8 @@
 
         }
         var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
-            // do nothing
+            $('#io_loader').hide();
+            $('#rc').show();
         });
         $(document).ready(function () {
             $('.sel-key')
@@ -89,6 +93,8 @@
 
 </script>
 <link rel="stylesheet" type="text/css" href="css/rc.css"/>
+
+<div id="io_loader">Connecting...</div>
 <div id="rc">
     <a id="rc_key_RIGHT" class="sel-key" data-button-code="RIGHT">
         <div class="selk-image selk-image_RIGHT"></div>
