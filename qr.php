@@ -1,4 +1,4 @@
 <?php 
-require("./lib/qrlib.php");
+require("./lib/phpqrcode/qrlib.php");
 QR::png('some othertext 1234');
 ?>
