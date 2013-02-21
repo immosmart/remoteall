@@ -4,7 +4,7 @@ var REMOTE_ALL_CONFIG = {
     url:null, //if defined @host@ will be ignored
     host:{
         protocol:'http',
-        domain:'localhost',
+        domain:'remoteall.org',
         port:'8888'
     }
 }

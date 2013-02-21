@@ -1,3 +1,4 @@
 /.idea/
 /nbproject/
 /js/config.js
+/js/server/node_modules/
