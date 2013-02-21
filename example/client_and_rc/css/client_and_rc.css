@@ -1,23 +1,34 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #ecffe7;
     font-family: Arial;
+    background-color: #FFF7ED;
 }
-#square{
+
+a {
+    color: #cd9a3d;
+    font-weight: bold;
+}
+
+#square {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 490px;
-    top: 31px;
-    background-color: #8000ff;
+    width: 32px;
+    height: 32px;
+    left: 520px;
+    top: 225px;
+    background: left url("../images/ufo.png");
     opacity: 0.7;
 }
-#description{
+
+#square.back {
+    background-position: right;
+}
+
+#description {
     position: absolute;
-    width: 370px;
+    width: 390px;
     height: 20px;
     left: 120px;
-    top: 30px;
+    top: 230px;
 
 }

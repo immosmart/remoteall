@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFF7ED;
+    font-family: monospace;
+}
+
+form.sender, .loader {
+    margin: 100px auto 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+input.code_holder {
+    border: solid 2px #CD9A3D;
+    font-size: 20px;
+    padding: 5px;
+}
+
+button.button {
+    border: solid 2px white;
+    background: #CD9A3D;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    margin: 0;
+
+}
+
+button.button:hover {
+    border-color: #CD9A3D;
+    cursor: pointer;
+}
+
+.codes_container {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.delay_container {
+    color: gray;
+}

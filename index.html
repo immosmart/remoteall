@@ -1,14 +1,16 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <title>client and rc - RemoteAll example</title>
+    <title>RemoteAll</title>
 
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="./css/client_and_rc.css"/>
+<link rel="stylesheet" type="text/css" href="./example/client_and_rc/css/client_and_rc.css"/>
+<link rel="stylesheet" type="text/css" href="./css/remoteall.css"/>
+
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
-<script src="../../js/remoteall.js"></script>
+<script src="./js/remoteall.js"></script>
 
 <!--CHECK socket.io.js SERVER-->
 <script src="http://localhost:8888/socket.io/socket.io.js"></script>
@@ -85,14 +87,14 @@
     $(document).ready(function () {
         //JS RC ON
         $('#turn_rc_on').click(function () {
-            window.open('rc/rc.html#js', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=420,height=190");
+            window.open('./example/client_and_rc/rc/rc.html#js', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=420,height=190");
             //$('#description').hide('slow');
             return false;
         })
 
         //POST RC ON
         $('#turn_post_rc_on').click(function () {
-            window.open('rc/rc.html#post', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=420,height=190");
+            window.open('./example/client_and_rc/rc/rc.html#post', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=420,height=190");
             //$('#description').hide('slow');
             return false;
         })
@@ -100,10 +102,19 @@
     })
 
 </script>
-
+<div id="header" >
+    <a href="https://github.com/immosmart/remoteall" id="forkme"><img src="./images/forkme.png"></a>
+    <div id="logo">REMOTE <sup>ALL</sup></div>
+    <div id="menu">
+        <a href="https://github.com/immosmart/remoteall/archive/master.zip">DOWNLOAD</a> | <a href="./example">EXAMPLES</a> | <a href="https://github.com/immosmart/remoteall/blob/master/README.md">DOCUMENTATION</a>
+    </div>
+</div>
 
 <div id="square"></div>
-<div id="description">Turn <a href="#" id="turn_rc_on">JS RC</a> or <a href="#" id="turn_post_rc_on">POST RC</a> on to
-    control this UFO &rarr;</div>
+<div id="description">
+    <img src="images/qr-code.gif" id="qr" align="left">
+    <div id="text_desc">Turn <b>MOBILE RC</b> or <a href="#" id="turn_rc_on">JS RC</a> on to  control this UFO &rarr;</div>
+
+</div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    background: #393939;
 }
 
 #rc {
@@ -8,9 +9,15 @@ html, body {
     left: 0;
     top: 0;
     color: #000;
-    background: #393939;
+    border: white solid 1px;
     height: 160px;
-    width: 136px;
+    width: 385px;
+    margin: auto;
+    background: #5d5d5d;
+    left: 50%;
+    top: 50%;
+    margin-left: -192px;
+    margin-top: -80px;
 }
 
 .sel-key {
@@ -58,15 +65,6 @@ html, body {
     background-position: 4px -37px;
 }
 
-#rc_key_ENTER {
-    left: 50px;
-    top: 58px;
-}
-
-.selk-image_ENTER {
-    background-position: -35px -37px;
-}
-
 #rc_key_RIGHT {
     left: 90px;
     top: 58px;
@@ -83,4 +81,58 @@ html, body {
 
 .selk-image_DOWN {
     background-position: -35px -86px;
+}
+
+#rc_key_BLUE {
+    left: 300px;
+    top: 10px;
+}
+
+.selk-image_BLUE {
+    background-position: -421px 9px;
+}
+
+#rc_key_YELLOW {
+    left: 260px;
+    top: 58px;
+}
+
+.selk-image_YELLOW {
+    background-position: -382px 9px;
+}
+
+#rc_key_GREEN {
+    left: 340px;
+    top: 58px;
+}
+
+.selk-image_GREEN {
+    background-position: -343px 9px;
+}
+
+#rc_key_RED {
+    left: 300px;
+    top: 106px;
+}
+
+.selk-image_RED {
+    background-position: -304px 9px;
+}
+
+#rc_key_TOOLS {
+    left: 160px;
+    top: 58px;
+}
+
+.selk-image_TOOLS {
+    background-position: 4px 9px;
+}
+
+#rc_key_ENTER {
+    left: 200px;
+    top: 58px;
+}
+
+.selk-image_ENTER {
+    background-position: -35px -37px;
 }
