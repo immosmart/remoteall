@@ -15,19 +15,13 @@
 
 <!--CHECK socket.io.js SERVER-->
 <script src="http://localhost:8888/socket.io/socket.io.js"></script>
+<script src="./js/config.js"></script>
 
 
 <script>
 
-    var REMOTE_ALL_CONFIG = {
-        appId:'myApp',
-        uniqueSessionId:'SecretSession_' + Math.random(),
-        host:{
-            protocol:'http',
-            domain:'localhost',
-            port:'8888'
-        }
-    }
+    REMOTE_ALL_CONFIG.uniqueSessionId = 'SecretSession_' + Math.random();
+    //REMOTE_ALL_CONFIG.app = 'myApp';
 
     var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
         // do nothing
