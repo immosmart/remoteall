@@ -23,12 +23,13 @@ If You need to do something after connection You can do it in callback where `co
 where `REMOTE_ALL_CONFIG` parts for `%NODEJS_SERVER%` @see [config.example.js](https://github.com/immosmart/remoteall/blob/master/js/config.example.js)
 
     var REMOTE_ALL_CONFIG = {
-        appId: 'appNan',
-        uniqueSessionId: 'SecretStringForConnection',
-        host: {
+        appId:'appNan',
+        uniqueSessionId:'SecretStringForConnection',
+        url:null, //if defined @host@ will be ignored
+        host:{
             protocol:'http',
-            domain: 'localhost',
-            port: '8888'
+            domain:'localhost',
+            port:'8888'
         }
     }
 
