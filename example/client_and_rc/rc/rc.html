@@ -12,21 +12,34 @@
 
 <script>
 
-    var REMOTE_ALL_CONFIG = {
-        appId:'myApp',
-        uniqueSessionId:'SecretSession_Td%^&4ds',
-        host:{
-            protocol:'http',
-            domain:'localhost',
-            port:'8888'
-        }
+    /**
+     * get hash in array
+     */
+    function getHashParams() {
+
+        var hashParams = {};
+        var e,
+                a = /\+/g,  // Regex for replacing addition symbol with a space
+                r = /([^&;=]+)=?([^&;]*)/g,
+                d = function (s) {
+                    return decodeURIComponent(s.replace(a, " "));
+                },
+                q = window.location.hash.substring(1);
+
+        while (e = r.exec(q))
+            hashParams[d(e[1])] = d(e[2]);
+
+        return hashParams;
     }
 
 
-    if (window.location.hash == '#post') {
+    var params = getHashParams();
+
+
+    if (params.type == 'post') {
         //POST RC----------------------------------------------
         var data = null;
-        var req_url = REMOTE_ALL_CONFIG.host.protocol + '://' + REMOTE_ALL_CONFIG.host.domain + ':' + REMOTE_ALL_CONFIG.host.port + '/emit'
+        var req_url = params.host + '/emit'
 
         $(document).ready(function () {
 
@@ -34,8 +47,8 @@
                 jQuery.post(
                         req_url,
                         {
-                            app:REMOTE_ALL_CONFIG.appId,
-                            session_id:REMOTE_ALL_CONFIG.uniqueSessionId,
+                            app:params.app,
+                            session_id:params.session_id,
                             emit_data:JSON.stringify(data)
                         }
                 )
@@ -53,6 +66,12 @@
         })
     } else {
         //JS RC----------------------------------------------
+        var REMOTE_ALL_CONFIG = {
+            url: params.host,
+            appId: params.app,
+            uniqueSessionId: params.session_id
+
+        }
         var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
             // do nothing
         });

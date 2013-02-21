@@ -5,7 +5,9 @@ body {
     height: 100%;
 
 }
-
+img{
+    border: none;
+}
 
 .delay_container {
     color: gray;
@@ -20,6 +22,7 @@ body {
 
 #forkme {
     float: right;
+    border: none;
 }
 #logo{
     position: absolute;
