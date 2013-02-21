@@ -56,14 +56,14 @@
                         clearInterval(timer);
                         timer = setInterval(function () {
                             $('#square').offset({ top:$('#square').offset().top + diff})
-                        }, 50);
+                        }, 20);
                         break;
                     case 'RIGHT':
                     case 'LEFT':
                         clearInterval(timer);
                         timer = setInterval(function () {
                             $('#square').offset({left:$('#square').offset().left + diff })
-                        }, 50);
+                        }, 20);
                         break;
                 }
                 break;
@@ -105,7 +105,7 @@
     </div>
 </div>
 
-<div id="square"></div>
+<div id="square"><img src="images/ufo2.png"></div>
 <div id="description">
     <img src="images/qr-code.gif" id="qr" align="left">
     <div id="text_desc">Turn <b>MOBILE RC</b> or <a href="#" id="turn_rc_on">JS RC</a> on to  control this UFO &rarr;</div>
