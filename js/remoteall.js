@@ -3,7 +3,7 @@ var remoteAll = function (params, connectCallback) {
     this.defaults = {
         appId:'appNan',
         uniqueSessionId:'SecretStringForConnection',
-        url: null,
+        url:null,
         host:{
             protocol:'http',
             domain:'localhost',
@@ -11,7 +11,7 @@ var remoteAll = function (params, connectCallback) {
         }
     }
     this.options = $.extend(this.defaults, params);
-    if(!this.options.url)
+    if (!this.options.url)
         this.options.url = this.options.host.protocol + '://' + this.options.host.domain + ':' + this.options.host.port;
 
     this.socket = io.connect(this.options.url);

@@ -1,5 +1,6 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>RemoteAll</title>
@@ -20,7 +21,7 @@
 
     var REMOTE_ALL_CONFIG = {
         appId:'myApp',
-        uniqueSessionId:'SecretSession_'+Math.random(),
+        uniqueSessionId:'SecretSession_' + Math.random(),
         host:{
             protocol:'http',
             domain:'localhost',
@@ -86,30 +87,44 @@
 
     $(document).ready(function () {
         var rc_host = REMOTE_ALL_CONFIG.host.protocol + '://' + REMOTE_ALL_CONFIG.host.domain + ':' + REMOTE_ALL_CONFIG.host.port;
-        var rc_url = './example/client_and_rc/rc/rc.html#app='+REMOTE_ALL_CONFIG.appId+'&session_id='+REMOTE_ALL_CONFIG.uniqueSessionId+'&host='+rc_host;
+        var rc_url = './example/client_and_rc/rc/rc.html#app=' + REMOTE_ALL_CONFIG.appId + '&session_id=' + REMOTE_ALL_CONFIG.uniqueSessionId + '&host=' + rc_host;
 
         //JS RC ON
         $('#turn_rc_on').click(function () {
-            window.open(rc_url+'&type=js', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=420,height=190");
+            window.open(rc_url + '&type=js', 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=420,height=190");
             //$('#description').hide('slow');
             return false;
         })
     })
 
 </script>
-<div id="header" >
+<div id="header">
     <a href="https://github.com/immosmart/remoteall" id="forkme"><img src="./images/forkme.png"></a>
+
     <div id="logo">REMOTE <sup>ALL</sup></div>
     <div id="menu">
-        <a href="https://github.com/immosmart/remoteall/archive/master.zip">DOWNLOAD</a> | <a href="./example">EXAMPLES</a> | <a href="https://github.com/immosmart/remoteall/blob/master/README.md">DOCUMENTATION</a>
+        <a href="https://github.com/immosmart/remoteall/archive/master.zip">DOWNLOAD</a> |
+        <a href="./example">EXAMPLES</a> |
+        <a href="https://github.com/immosmart/remoteall/blob/master/README.md">DOCUMENTATION</a>
     </div>
 </div>
+<div id="main_container">
+    <div id="square"><img src="images/ufo2.png"></div>
+    <div id="description">
+        <img src="images/qr-code.gif" id="qr" align="left">
 
-<div id="square"><img src="images/ufo2.png"></div>
-<div id="description">
-    <img src="images/qr-code.gif" id="qr" align="left">
-    <div id="text_desc">Turn <b>MOBILE RC</b> or <a href="#" id="turn_rc_on">JS RC</a> on to  control this UFO &rarr;</div>
-
+        <div id="text_desc">Turn <b>MOBILE RC</b> or <a href="#" id="turn_rc_on">JS RC</a> on to control this UFO &rarr;
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div id="bottom_menu">
+        <a href="https://github.com/immosmart/remoteall/archive/master.zip">DOWNLOAD</a> |
+        <a href="./example">EXAMPLES</a> |
+        <a href="https://github.com/immosmart/remoteall/blob/master/README.md">DOCUMENTATION</a>
+    </div>
+    <br/>
+    &copy; <a href="http://remoteall.org">RemoteAll.org</a>
 </div>
 </body>
 </html>

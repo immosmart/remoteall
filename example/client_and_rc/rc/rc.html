@@ -19,7 +19,7 @@
 
         var hashParams = {};
         var e,
-                a = /\+/g,  // Regex for replacing addition symbol with a space
+                a = /\+/g, // Regex for replacing addition symbol with a space
                 r = /([^&;=]+)=?([^&;]*)/g,
                 d = function (s) {
                     return decodeURIComponent(s.replace(a, " "));
@@ -67,9 +67,9 @@
     } else {
         //JS RC----------------------------------------------
         var REMOTE_ALL_CONFIG = {
-            url: params.host,
-            appId: params.app,
-            uniqueSessionId: params.session_id
+            url:params.host,
+            appId:params.app,
+            uniqueSessionId:params.session_id
 
         }
         var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {

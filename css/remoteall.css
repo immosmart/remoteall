@@ -1,11 +1,12 @@
 body {
     margin: 0;
     padding: 0;
-    background: #FFF7ED !important;
+    background: #FFEFD5 !important;
     height: 100%;
 
 }
-img{
+
+img {
     border: none;
 }
 
@@ -17,14 +18,14 @@ img{
     width: 100%;
     height: 150px;
     border-bottom: dashed 1px #777;
-    background: #FFEFD5;
 }
 
 #forkme {
     float: right;
     border: none;
 }
-#logo{
+
+#logo {
     position: absolute;
     font-size: 50px;
     font-weight: bold;
@@ -32,32 +33,64 @@ img{
     left: 185px;
     color: #78787c;
 }
-#menu{
+
+#menu {
     font-size: 30px;
     color: #515155;
     position: absolute;
     left: 520px;
     top: 37px;
 }
-#menu a{
+
+#menu a {
     color: #515155;
     text-decoration: none;
 }
 
-#menu a:hover{
+#menu a:hover {
     text-decoration: underline;
 }
 
-#description{
+#main_container {
+    position: absolute;
+    top: 151px;
+    width: 100%;
+    background: #FFF7ED;
+    height: 550px;
+}
+
+#description {
     width: 750px;
     vertical-align: middle;
     height: 400px;
+    top: 100px;
 }
-#text_desc{
+
+#text_desc {
     margin-top: 155px;
 }
-#square{
-    top: 280px;
+
+#square {
+    top: 130px;
     left: 850px;
     background: none;
+}
+
+#footer {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    border-top: dashed 1px #777;
+    background: #FFEFD5;
+    top: 700px;
+    text-align: center;
+    padding-top: 20px;
+    color: #777;
+    font-size: 13px;
+}
+
+#footer a {
+    font-weight: normal;
+    text-decoration: none;
+    color: #777;
 }
