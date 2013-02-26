@@ -25,7 +25,7 @@ html, body {
 
 .sel-key {
     float: left;
-    width: 9%;
+    width: 14%;
     height: 27%;
     background: #f3eeef;
     position: absolute;
@@ -33,51 +33,59 @@ html, body {
     cursor: pointer;
 }
 .sel-key.active{
-    background: #cadfff;
+    background: #298cff !important;
+    color: white;
+    font-weight: bold;
 }
 
 #rc_key_UP {
-    left: 13%;
-    top: 6.5%;
+    left: 16%;
+    top: 9.7%;
 }
 #rc_key_LEFT {
-    left: 2.6%;
+    left: 2%;
     top: 36.7%;
 }
 #rc_key_RIGHT {
-    left: 23.5%;
+    left: 30%;
     top: 36.7%;
 }
 #rc_key_DOWN {
-    left: 13%;
-    top: 66.5%;
+    left: 16%;
+    top: 63.7%;
 }
 #rc_key_BLUE {
-    left: 78%;
+    left: 67%;
     top: 6.5%;
-    background: #cadfff;
+    background: #6ccbff;
 }
 #rc_key_YELLOW {
-    left: 67.6%;
+    left: 51%;
     top: 36.7%;
-    background: #ffefb4;
+    background: #ffef83;
 }
 
 #rc_key_GREEN {
-    left: 88.5%;
+    left: 84%;
     top: 36.7%;
-    background: #c3ffcb;
+    background: #75ffa6;
 }
 #rc_key_RED {
-    left: 78%;
+    left: 67%;
     top: 66.5%;
-    background: #ffd3c2;
+    background: #ffb88d;
 }
 #rc_key_TOOLS {
-    left: 41.6%;
-    top: 45%;
+    left: 37%;
+    top: 75%;
+    height: 7%;
+    width: 10%;
+    background: #d8d6d5;
 }
 #rc_key_ENTER {
-    left: 52%;
-    top: 45%;
+    left: 49%;
+    top: 75%;
+    height: 7%;
+    width: 10%;
+    background: #d8d6d5;
 }

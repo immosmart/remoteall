@@ -13,7 +13,8 @@
 <script>
 
     /**
-     * get hash in array
+     * get params from hash
+     * @return {Object}
      */
     function getHashParams() {
 
@@ -31,6 +32,12 @@
 
         return hashParams;
     }
+    /**
+     * prevent events for mobile
+     * @param event
+     * @return {Boolean}
+     * @private
+     */
     function absorbEvent_(event) {
         var e = event || window.event;
         e.preventDefault && e.preventDefault();
@@ -39,9 +46,11 @@
         e.returnValue = false;
         return false;
     }
-
+    /**
+     * set needed sizes for RC
+     */
     function sizeRC() {
-        var h = $('body').width() / 2.4;
+        var h = $('body').width() / 1.7;
         $('#rc').height(h + 'px');
         $('#rc').css('margin-top', '-' + (h / 2) + 'px');
         $('#io_loader').hide();
@@ -58,10 +67,11 @@
         })
 
         if (params.type == 'post') {
+
+
             //POST RC----------------------------------------------
             var data = null;
             var req_url = params.host + '/emit'
-
 
             var send_data = function (data) {
                 jQuery.post(
@@ -75,7 +85,6 @@
             }
 
             sizeRC()
-
             $(".sel-key").on("mousedown touchstart", function (event) {
                 $(this).addClass('active');
                 data = {event_name:'button_down', button_code:$(this).data('button-code')};
@@ -103,7 +112,6 @@
             var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
                 sizeRC();
             });
-
 
             $(".sel-key").on("mousedown touchstart", function (event) {
                 $(this).addClass('active');
@@ -137,6 +145,7 @@
     <div id="rc_key_UP" class="sel-key" data-button-code="UP">
         &uarr;
     </div>
+
     <div id="rc_key_ENTER" class="sel-key">
         &crarr;
     </div>
