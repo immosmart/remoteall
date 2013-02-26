@@ -11,7 +11,7 @@
 <script src="http://remoteall.org:8888/socket.io/socket.io.js"></script>
 
 <script>
-   
+
     /**
      * get hash in array
      */
@@ -39,19 +39,21 @@
 		e.returnValue = false;
 		return false;
 	}
-	$('.sel-key').on('ontouchmove ontouchcancel touchend mouseup touchstart mousedown', function (event) {
-		absorbEvent_(event);
-	})
-	
+
+
     var params = getHashParams();
 
 	$(document).ready(function () {
+        $('.sel-key').on('ontouchmove ontouchcancel touchend mouseup touchstart mousedown', function (event) {
+            absorbEvent_(event);
+        })
+
 		if (params.type == 'post') {
 			//POST RC----------------------------------------------
 			var data = null;
 			var req_url = params.host + '/emit'
 
-			
+
 
 			var send_data = function (data) {
 				jQuery.post(
@@ -78,11 +80,11 @@
 				send_data(data);
 				return false;
 			});
-			
-			
+
+
 		} else {
-		
-		
+
+
 			//JS RC----------------------------------------------
 			var REMOTE_ALL_CONFIG = {
 				url:params.host,
@@ -94,7 +96,7 @@
 				$('#io_loader').hide();
 				$('#rc').show();
 			});
-			
+
 
 			$(".sel-key").on("mousedown touchstart", function(event){
 				ra.sendCode({event_name:'button_down', button_code:$(this).data('button-code')});
@@ -102,7 +104,7 @@
 			$(".sel-key").on("mouseup touchend", function(event){
 				ra.sendCode({event_name:'button_up', button_code:$(this).data('button-code')});
 			});
-			
+
 		}
 	})
 
