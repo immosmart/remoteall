@@ -53,7 +53,7 @@
 
     $(document).ready(function () {
         $(window).on('resize', sizeRC)
-        $('.sel-key').on('ontouchmove ontouchcancel touchend mouseup touchstart mousedown', function (event) {
+        $('.sel-key, body').on('ontouchmove ontouchcancel touchend mouseup touchstart mousedown', function (event) {
             absorbEvent_(event);
         })
 
