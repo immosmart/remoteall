@@ -8,24 +8,16 @@ html, body {
 #rc {
     position: absolute;
     color: #000;
-    border: white solid 1px;
-    height: 160px;
-    width: 385px;
-    left: 50%;
+    height: 100%;
+    width: 100%;
     top: 50%;
-    margin-left: -192px;
-    margin-top: -80px;
     background: #5d5d5d;
     display: none;
 }
 #io_loader{
     position: absolute;
-    height: 160px;
-    width: 385px;
-    left: 50%;
-    top: 50%;
-    margin-left: -192px;
-    margin-top: -80px;
+    height: 100%;
+    width: 100%;
     color: white;
     text-align: center;
     vertical-align: middle;
@@ -33,117 +25,59 @@ html, body {
 
 .sel-key {
     float: left;
-    width: 35px;
-    height: 43px;
-    background: url("../img/b_bg.png") no-repeat;
+    width: 9%;
+    height: 27%;
+    background: #f3eeef;
     position: absolute;
     left: -200px;
     cursor: pointer;
 }
-
-.sel-key:hover {
-    background-position: 0 -49px;
-}
-
-.sel-key:hover .selk-image {
-    background-image: url("../img/b1_hover.png");
-}
-
-.selk-image {
-    background: url("../img/b1.png") no-repeat;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 35px;
-    height: 43px;
+.sel-key.active{
+    background: #cadfff;
 }
 
 #rc_key_UP {
-    left: 50px;
-    top: 10px;
+    left: 13%;
+    top: 6.5%;
 }
-
-.selk-image_UP {
-    background-position: -35px 9px;
-}
-
 #rc_key_LEFT {
-    left: 10px;
-    top: 58px;
+    left: 2.6%;
+    top: 36.7%;
 }
-
-.selk-image_LEFT {
-    background-position: 4px -37px;
-}
-
 #rc_key_RIGHT {
-    left: 90px;
-    top: 58px;
+    left: 23.5%;
+    top: 36.7%;
 }
-
-.selk-image_RIGHT {
-    background-position: -73px -37px;
-}
-
 #rc_key_DOWN {
-    left: 50px;
-    top: 106px;
+    left: 13%;
+    top: 66.5%;
 }
-
-.selk-image_DOWN {
-    background-position: -35px -86px;
-}
-
 #rc_key_BLUE {
-    left: 300px;
-    top: 10px;
+    left: 78%;
+    top: 6.5%;
+    background: #cadfff;
 }
-
-.selk-image_BLUE {
-    background-position: -421px 9px;
-}
-
 #rc_key_YELLOW {
-    left: 260px;
-    top: 58px;
-}
-
-.selk-image_YELLOW {
-    background-position: -382px 9px;
+    left: 67.6%;
+    top: 36.7%;
+    background: #ffefb4;
 }
 
 #rc_key_GREEN {
-    left: 340px;
-    top: 58px;
+    left: 88.5%;
+    top: 36.7%;
+    background: #c3ffcb;
 }
-
-.selk-image_GREEN {
-    background-position: -343px 9px;
-}
-
 #rc_key_RED {
-    left: 300px;
-    top: 106px;
+    left: 78%;
+    top: 66.5%;
+    background: #ffd3c2;
 }
-
-.selk-image_RED {
-    background-position: -304px 9px;
-}
-
 #rc_key_TOOLS {
-    left: 160px;
-    top: 68px;
+    left: 41.6%;
+    top: 45%;
 }
-
-.selk-image_TOOLS {
-    background-position: 4px 9px;
-}
-
 #rc_key_ENTER {
-    left: 200px;
-    top: 68px;
-}
-
-.selk-image_ENTER {
-    background-position: -35px -37px;
+    left: 52%;
+    top: 45%;
 }

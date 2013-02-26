@@ -31,82 +31,93 @@
 
         return hashParams;
     }
-	function absorbEvent_(event) {
-		var e = event || window.event;
-		e.preventDefault && e.preventDefault();
-		e.stopPropagation && e.stopPropagation();
-		e.cancelBubble = true;
-		e.returnValue = false;
-		return false;
-	}
+    function absorbEvent_(event) {
+        var e = event || window.event;
+        e.preventDefault && e.preventDefault();
+        e.stopPropagation && e.stopPropagation();
+        e.cancelBubble = true;
+        e.returnValue = false;
+        return false;
+    }
+
+    function sizeRC() {
+        var h = $('body').width() / 2.4;
+        $('#rc').height(h + 'px');
+        $('#rc').css('margin-top', '-' + (h / 2) + 'px');
+        $('#io_loader').hide();
+        $('#rc').show();
+    }
 
 
     var params = getHashParams();
 
-	$(document).ready(function () {
+    $(document).ready(function () {
+        $(window).on('resize', sizeRC)
         $('.sel-key').on('ontouchmove ontouchcancel touchend mouseup touchstart mousedown', function (event) {
             absorbEvent_(event);
         })
 
-		if (params.type == 'post') {
-			//POST RC----------------------------------------------
-			var data = null;
-			var req_url = params.host + '/emit'
+        if (params.type == 'post') {
+            //POST RC----------------------------------------------
+            var data = null;
+            var req_url = params.host + '/emit'
 
 
+            var send_data = function (data) {
+                jQuery.post(
+                        req_url,
+                        {
+                            app:params.app,
+                            session_id:params.session_id,
+                            emit_data:JSON.stringify(data)
+                        }
+                )
+            }
 
-			var send_data = function (data) {
-				jQuery.post(
-						req_url,
-						{
-							app:params.app,
-							session_id:params.session_id,
-							emit_data:JSON.stringify(data)
-						}
-				)
-			}
+            sizeRC()
 
-			$('#io_loader').hide();
-			$('#rc').show();
-
-
-			$(".sel-key").on("mousedown touchstart", function(event){
-				data = {event_name:'button_down', button_code:$(this).data('button-code')};
-				send_data(data);
-				return false;
-			});
-			$(".sel-key").on("mouseup touchend", function(event){
-				data = {event_name:'button_up', button_code:$(this).data('button-code')};
-				send_data(data);
-				return false;
-			});
-
-
-		} else {
+            $(".sel-key").on("mousedown touchstart", function (event) {
+                $(this).addClass('active');
+                data = {event_name:'button_down', button_code:$(this).data('button-code')};
+                send_data(data);
+                return false;
+            });
+            $(".sel-key").on("mouseup touchend", function (event) {
+                $(this).removeClass('active');
+                data = {event_name:'button_up', button_code:$(this).data('button-code')};
+                send_data(data);
+                return false;
+            });
 
 
-			//JS RC----------------------------------------------
-			var REMOTE_ALL_CONFIG = {
-				url:params.host,
-				appId:params.app,
-				uniqueSessionId:params.session_id
-
-			}
-			var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
-				$('#io_loader').hide();
-				$('#rc').show();
-			});
+        } else {
 
 
-			$(".sel-key").on("mousedown touchstart", function(event){
-				ra.sendCode({event_name:'button_down', button_code:$(this).data('button-code')});
-			});
-			$(".sel-key").on("mouseup touchend", function(event){
-				ra.sendCode({event_name:'button_up', button_code:$(this).data('button-code')});
-			});
+            //JS RC----------------------------------------------
+            var REMOTE_ALL_CONFIG = {
+                url:params.host,
+                appId:params.app,
+                uniqueSessionId:params.session_id
 
-		}
-	})
+            }
+            var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
+                sizeRC();
+            });
+
+
+            $(".sel-key").on("mousedown touchstart", function (event) {
+                $(this).addClass('active');
+                ra.sendCode({event_name:'button_down', button_code:$(this).data('button-code')});
+                return false;
+            });
+            $(".sel-key").on("mouseup touchend", function (event) {
+                $(this).removeClass('active');
+                ra.sendCode({event_name:'button_up', button_code:$(this).data('button-code')});
+                return false;
+            });
+
+        }
+    })
 
 </script>
 <link rel="stylesheet" type="text/css" href="css/rc.css"/>
@@ -114,36 +125,36 @@
 <div id="io_loader">Connecting...</div>
 <div id="rc">
     <div id="rc_key_RIGHT" class="sel-key" data-button-code="RIGHT">
-
+        &rarr;
     </div>
     <div id="rc_key_LEFT" class="sel-key" data-button-code="LEFT">
-
+        &larr;
     </div>
     <div id="rc_key_DOWN" class="sel-key" data-button-code="DOWN">
-
+        &darr;
     </div>
 
     <div id="rc_key_UP" class="sel-key" data-button-code="UP">
-
+        &uarr;
     </div>
     <div id="rc_key_ENTER" class="sel-key">
-
+        &crarr;
     </div>
     <div id="rc_key_TOOLS" class="sel-key">
-
+        &tilde;
     </div>
 
     <div id="rc_key_RED" class="sel-key">
-
+        A
     </div>
     <div id="rc_key_GREEN" class="sel-key">
-
+        B
     </div>
     <div id="rc_key_YELLOW" class="sel-key">
-
+        C
     </div>
     <div id="rc_key_BLUE" class="sel-key">
-
+        D
     </div>
 
 </div>
