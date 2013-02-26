@@ -50,7 +50,15 @@
      * set needed sizes for RC
      */
     function sizeRC() {
-        var h = $('body').width() / 1.7;
+        var ratio = 1.7
+        var w = $('body').width()
+        var h = w / ratio;
+
+        if($('body').height()<h){
+            h = $('body').height()
+            w = h * ratio;
+        }
+
         $('#rc').height(h + 'px');
         $('#rc').css('margin-top', '-' + (h / 2) + 'px');
         $('#io_loader').hide();
