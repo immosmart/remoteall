@@ -3,6 +3,8 @@ html, body {
     padding: 0;
     background: #393939;
     font-family: Arial;
+    height: 100%;
+    width: 100%;
 }
 
 #rc {
@@ -11,6 +13,7 @@ html, body {
     height: 100%;
     width: 100%;
     top: 50%;
+    left: 50%;
     background: #5d5d5d;
     display: none;
 }
