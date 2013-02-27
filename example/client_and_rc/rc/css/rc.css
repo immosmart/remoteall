@@ -17,13 +17,15 @@ html, body {
     background: #5d5d5d;
     display: none;
 }
-#io_loader{
+
+#io_loader {
     position: absolute;
     height: 100%;
     width: 100%;
     color: white;
     text-align: center;
     vertical-align: middle;
+    font-size: 30px;
 }
 
 .sel-key {
@@ -34,34 +36,42 @@ html, body {
     position: absolute;
     left: -200px;
     cursor: pointer;
+    color: #2a2728;
+    overflow: hidden;
+    text-align: center;
 }
-.sel-key.active{
+
+.sel-key.active {
     background: #298cff !important;
     color: white;
-    font-weight: bold;
 }
 
 #rc_key_UP {
     left: 16%;
     top: 9.7%;
 }
+
 #rc_key_LEFT {
     left: 2%;
     top: 36.7%;
 }
+
 #rc_key_RIGHT {
     left: 30%;
     top: 36.7%;
 }
+
 #rc_key_DOWN {
     left: 16%;
     top: 63.7%;
 }
+
 #rc_key_BLUE {
     left: 67%;
     top: 6.5%;
     background: #6ccbff;
 }
+
 #rc_key_YELLOW {
     left: 51%;
     top: 36.7%;
@@ -73,22 +83,25 @@ html, body {
     top: 36.7%;
     background: #75ffa6;
 }
+
 #rc_key_RED {
     left: 67%;
     top: 66.5%;
     background: #ffb88d;
 }
+
 #rc_key_TOOLS {
     left: 37%;
     top: 75%;
-    height: 7%;
+    height: 13%;
     width: 10%;
     background: #d8d6d5;
 }
+
 #rc_key_ENTER {
     left: 49%;
     top: 75%;
-    height: 7%;
+    height: 13%;
     width: 10%;
     background: #d8d6d5;
 }

@@ -51,10 +51,11 @@
      */
     function sizeRC() {
         var ratio = 2
+        var font_ratio = 1.25
         var w = $('body').width()
         var h = w / ratio;
 
-        if($('body').height()<h){
+        if ($('body').height() < h) {
             h = $('body').height()
             w = h * ratio;
         }
@@ -68,6 +69,12 @@
 
         $('#io_loader').hide();
         $('#rc').show();
+
+        $('.sel-key').each(function () {
+            var kh = $(this).height();
+            $(this).css('font-size', (kh / font_ratio) + 'px')
+        })
+
     }
 
 
@@ -160,10 +167,10 @@
     </div>
 
     <div id="rc_key_ENTER" class="sel-key">
-        &crarr;
+        &raquo;
     </div>
     <div id="rc_key_TOOLS" class="sel-key">
-        &tilde;
+        &laquo;
     </div>
 
     <div id="rc_key_RED" class="sel-key">
