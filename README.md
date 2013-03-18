@@ -70,6 +70,21 @@ If you need to send some data for Controlled APP using http/POST request u shoul
 * session_id(string) - `uniqueSessionId`
 * emit_data(json|string|number`) - data to send
 
+### MultiSession
+
+Clients can be connected to additional sessions
+    
+    ra.addSession('additionalSessionId')
+    ra.addSession('additionalSessionId2')
+
+also clients can disconnect from session(s)
+
+    ra.addSession('additionalSessionId2')
+
+Next code will be recieved by clients connected to session with `additionalSessionId` only
+
+    ra.sendCode('CODE_YYY','additionalSessionId')
+
 ## Example
 
 @see [example with JS and NonJS(POST) Remote Controller](https://github.com/immosmart/remoteall/blob/master/example/client_and_rc/)
