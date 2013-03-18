@@ -1,7 +1,7 @@
 var REMOTE_ALL_SERVER_CONFIG = {
-    host:{
-        domain:'127.0.0.1',
-        port:'8888'
+    host: {
+        domain: '127.0.0.1',
+        port: '8888'
     }
 }
 
@@ -75,6 +75,7 @@ io.sockets.on('connection', function (socket) {
     var session_id = 'share';
     socket.join(app + '_' + session_id);
 
+    //set main Session/Room that used for communications
     socket.on('set_session', function (_app, _session_id) {
         socket.leave(app + '_' + session_id)
         app = _app;
@@ -82,8 +83,22 @@ io.sockets.on('connection', function (socket) {
         socket.join(app + '_' + session_id);
     });
 
-    socket.on('send_code', function (data) {
-        io.sockets.in(app + '_' + session_id).emit('recive_code', data)
+    //connect to additional session
+    socket.on('add_session', function (_session_id) {
+        console.log('add session '+_session_id);
+        socket.join(app + '_' + _session_id);
+    });
+
+    //disconnect from additional session
+    socket.on('remove_session', function (_session_id) {
+        console.log('add session '+_session_id);
+        socket.leave(app + '_' + _session_id);
+    });
+
+
+    socket.on('send_code', function (data,_session_id) {
+        var ses_id = _session_id?_session_id:session_id;
+        io.sockets.in(app + '_' + ses_id).emit('recive_code', data)
     });
 });
 
