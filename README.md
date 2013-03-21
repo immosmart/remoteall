@@ -6,7 +6,7 @@
 
 ### Start server
 
-Check out `var REMOTE_ALL_SERVER_CONFIG` in `./js/server/remoteall_server.js` and run it on your `%NODEJS_SERVER%`
+Create `./js/server/remoteall_server.config.js` (can be based on `./js/server/remoteall_server.config.example.js`) and run it on your `%NODEJS_SERVER%`
 
     > node ./js/server/remoteall_server.js
 
