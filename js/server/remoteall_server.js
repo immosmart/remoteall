@@ -1,9 +1,4 @@
-var REMOTE_ALL_SERVER_CONFIG = {
-    host: {
-        domain: '127.0.0.1',
-        port: '8888'
-    }
-}
+var REMOTE_ALL_SERVER_CONFIG = require('./remoteall_server.config.js')
 
 var app = require('http').createServer(handler)
     , io = require('socket.io').listen(app)

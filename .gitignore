@@ -2,3 +2,5 @@
 /nbproject/
 /js/config.js
 /js/server/node_modules/
+/js/server/remoteall_server.config.js
+
