@@ -48,8 +48,8 @@ RC can send codes or data throw remoteall server
 ### Controlled APP
 
 You should add callback for event `recive_code` where
-* `data` contains `{code:'xxx_code',index:'2'}` or `'CODE_XXX'` received from RC
-* `session_id` contains  ID of session  used to transfer information
+`data` contains `{code:'xxx_code',index:'2'}` or `'CODE_XXX'` received from RC and
+`session_id` contains  ID of session  used to transfer information
 
     ra.on('recive_code', function (data, session_id) {
       //do something
