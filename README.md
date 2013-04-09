@@ -23,10 +23,10 @@ If You need to do something after connection You can do it in callback where `co
 where `REMOTE_ALL_CONFIG` parts for `%NODEJS_SERVER%` @see [config.example.js](https://github.com/immosmart/remoteall/blob/master/js/config.example.js)
 
     var REMOTE_ALL_CONFIG = {
-        appId:'appNan',
-        uniqueSessionId:'SecretStringForConnection',
-        url:null, //if defined @host@ will be ignored
-        host:{
+        appId : 'appNan',
+        uniqueSessionId : 'SecretStringForConnection',
+        url : null, //if defined @host@ will be ignored
+        host : {
             protocol:'http',
             domain:'localhost',
             port:'8888'
@@ -47,15 +47,17 @@ RC can send codes or data throw remoteall server
 
 ### Controlled APP
 
-You should add callback for event `recive_code` where `data` contains `{code:'xxx_code',index:'2'}` or `'CODE_XXX'` received from RC
+You should add callback for event `recive_code` where
+* `data` contains `{code:'xxx_code',index:'2'}` or `'CODE_XXX'` received from RC
+* `session_id` contains  ID of session  used to transfer information
 
-    ra.on('recive_code', function (data) {
+    ra.on('recive_code', function (data, session_id) {
       //do something
     })
     
 so you can add more than one event handler
 
-    ra.on('recive_code', function (data) {
+    ra.on('recive_code', function (data, session_id) {
       //do something else
     })
 

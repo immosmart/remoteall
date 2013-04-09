@@ -80,20 +80,20 @@ io.sockets.on('connection', function (socket) {
 
     //connect to additional session
     socket.on('add_session', function (_session_id) {
-        console.log('add session '+_session_id);
+        console.log('add session ' + _session_id);
         socket.join(app + '_' + _session_id);
     });
 
     //disconnect from additional session
     socket.on('remove_session', function (_session_id) {
-        console.log('add session '+_session_id);
+        console.log('add session ' + _session_id);
         socket.leave(app + '_' + _session_id);
     });
 
 
-    socket.on('send_code', function (data,_session_id) {
-        var ses_id = _session_id?_session_id:session_id;
-        io.sockets.in(app + '_' + ses_id).emit('recive_code', data)
+    socket.on('send_code', function (data, _session_id) {
+        var ses_id = _session_id ? _session_id : session_id;
+        io.sockets.in(app + '_' + ses_id).emit('recive_code', {data: data, session_id: ses_id})
     });
 });
 

@@ -27,7 +27,7 @@
 
     //--------------------example 1-------------------------
     // (3) We need to do something on @recive_code event
-    //    ra.on('recive_code',function(data){
+    //    ra.on('recive_code',function(data, session_id){
     //        console.log(data.code+data.index);
     //    })
 
@@ -44,7 +44,7 @@
             return false;
         })
     })
-    ra.on('recive_code', function (data) {
+    ra.on('recive_code', function (data, session_id) {
         if (profiler) {
             var delay = new Date().getTime() - profiler;
             profiler = null;

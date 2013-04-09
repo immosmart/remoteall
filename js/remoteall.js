@@ -32,23 +32,24 @@ var remoteAll = function (params, connectCallback) {
     this.off = function (event) {
         this.handlers[event] = [];
     }
-    this.trig = function (event, args) {
+    this.trig = function (event) {
+        var args = Array.prototype.slice.call(arguments, 1, arguments.length);
         for (var key in this.handlers[event]) {
             var func = this.handlers[event][key];
-            func.call(this, args);
+            func.apply(this, args);
         }
     }
 
 
-    this.socket.on('recive_code', function (code) {
-        self.trig('recive_code', code);
+    this.socket.on('recive_code', function (data) {
+        self.trig('recive_code', data.data, data.session_id);
     })
     /**
      *
      * @param code
      * @param session_id
      */
-    this.sendCode = function (code,session_id) {
+    this.sendCode = function (code, session_id) {
         this.socket.emit('send_code', code, session_id);
     }
     /**

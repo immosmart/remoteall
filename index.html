@@ -27,9 +27,11 @@
         // do nothing
     });
     var timer = null;
-    ra.on('recive_code', function (data) {
+    ra.on('recive_code', function (data,session_id) {
+
         var diff = 0;
         var direction = null;
+        console.log('Room: ' + session_id);
         //console.log(data.event_name+' '+data.button_code);
 
         switch (data.event_name) {
