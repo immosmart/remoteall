@@ -95,37 +95,58 @@ io.sockets.on('connection', function (socket) {
     socket.on('add_session', function (_session_id, member_data) {
         console.log('add session ' + _session_id);
         var fullSessID = app + '_' + _session_id;
+
+        //if passed member_data and not double enter in room
         if (member_data && !my_rooms[_session_id]) {
+            //store member data to send it after disconnect or remove session
             my_member_data = member_data;
+
+            //store room id
             my_rooms[_session_id] = true;
+
+            //create new member list if not exists
             if (!rooms[fullSessID]) {
                 rooms[fullSessID] = [];
             }
-            console.log('sending members list');
-            console.log(rooms[fullSessID]);
+
+            //sending members list to new member
             socket.emit('members_list', rooms[fullSessID], _session_id);
+
+            //store new member
             rooms[fullSessID].push(member_data);
+
+            //notify members about new
             io.sockets.in(fullSessID).emit('on', member_data, _session_id);
         }
 
         socket.join(fullSessID);
     });
 
-    //disconnect from additional session
-    socket.on('remove_session', function (_session_id) {
-        console.log('add session ' + _session_id);
+    //kick by request or disconnect
+    function removeSession(_session_id) {
+        console.log('remove session ' + _session_id);
         var fullSessID = app + '_' + _session_id;
         socket.leave(fullSessID);
+
         if (my_rooms[_session_id]) {
+
+            //remove current member from room
             rooms[fullSessID] = _.filter(rooms[fullSessID], function (member_data) {
                 return member_data !== my_member_data;
             });
+
+            //remove empty rooms
             if (!rooms[fullSessID].length) {
                 delete rooms[fullSessID]
             }
+
+            //notify members about disconnect
             io.sockets.in(fullSessID).emit('off', my_member_data, _session_id);
         }
-    });
+    };
+
+    //disconnect from additional session
+    socket.on('remove_session', removeSession);
 
 
     socket.on('send_code', function (data, _session_id) {
@@ -135,16 +156,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
         for (var _session_id in my_rooms) {
-            var session_id = app + '_' + _session_id;
-            io.sockets.in(session_id).emit('off', my_member_data, _session_id);
-
-            rooms[session_id] = _.filter(rooms[session_id], function (member_data) {
-                return member_data !== my_member_data;
-            });
-
-            if (!rooms[session_id].length) {
-                delete rooms[session_id]
-            }
+            removeSession(_session_id);
         }
         my_rooms = {};
     });
