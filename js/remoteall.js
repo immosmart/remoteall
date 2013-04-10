@@ -11,22 +11,27 @@ var remoteAll = function (params, connectCallback) {
         }
     }
     this.options = $.extend(this.defaults, params);
-    if (!this.options.url)
+    if (!this.options.url) {
         this.options.url = this.options.host.protocol + '://' + this.options.host.domain + ':' + this.options.host.port;
+    }
 
     this.socket = io.connect(this.options.url);
 
     this.socket.on('connect', function () {
 
         self.setSession(self.options.appId, self.options.uniqueSessionId)
-        if (connectCallback)
+        if (connectCallback) {
             connectCallback.call(self, arguments);
+        }
     })
 
     this.handlers = {
         recive_code: []
     }
     this.on = function (event, callback) {
+        if (!this.handlers[event]) {
+            this.handlers[event] = [];
+        }
         this.handlers[event].push(callback);
     };
     this.off = function (event) {
@@ -40,9 +45,20 @@ var remoteAll = function (params, connectCallback) {
         }
     }
 
+    this.socket.on('members_list', function (list, session_id) {
+        self.trig('members_list', list, session_id);
+    });
 
-    this.socket.on('recive_code', function (data) {
-        self.trig('recive_code', data.data, data.session_id);
+    this.socket.on('on', function (member_data, session_id) {
+        self.trig('on', member_data, session_id);
+    });
+
+    this.socket.on('off', function (member_data, session_id) {
+        self.trig('off', member_data, session_id);
+    });
+
+    this.socket.on('recive_code', function (data, session_id) {
+        self.trig('recive_code', data, session_id);
     })
     /**
      *
@@ -64,8 +80,8 @@ var remoteAll = function (params, connectCallback) {
      *
      * @param session_id
      */
-    this.addSession = function (session_id) {
-        this.socket.emit('add_session', session_id);
+    this.addSession = function (session_id, member_data) {
+        this.socket.emit('add_session', session_id, member_data);
     }
     /**
      *
