@@ -19,7 +19,7 @@ function handler(req, res) {
             });
             req.on('end', function () {
                 var POST = qs.parse(body);
-                console.log(POST);
+
                 var app = POST.app ? POST.app : null;
                 var session_id = POST.session_id ? POST.session_id : null;
                 var emit_data = POST.emit_data ? POST.emit_data : null;
@@ -87,7 +87,7 @@ Room.add = function (app, session_id, socket, data) {
 }
 Room.remove = function (app, session_id, socket) {
     var room = rooms[app + '_' + session_id];
-    console.log(app , session_id, room);
+
     if (!room) {
         return;
     }
@@ -129,8 +129,9 @@ Room.prototype = {
         this.send('recive_code', data);
     },
     send: function (name, data) {
+        var self=this;
         _.each(this.members, function (member) {
-            member.socket.emit(name, data, this.session_id);
+            member.socket.emit(name, data, self.session_id);
         });
     },
     destroy: function (app) {
@@ -178,8 +179,13 @@ io.sockets.on('connection', function (socket) {
         rooms[app + '_' + ses_id].code(data, ses_id);
     });
 
+    socket.on('ping', function () {
+        console.log('ping');
+        socket.emit('pong');
+    });
+
     socket.on('disconnect', function () {
-        //console.log('disconnect');
+
         for (var _session_id in my_rooms) {
 
             Room.remove(app, _session_id, socket);
