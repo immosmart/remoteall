@@ -6,7 +6,8 @@
   "dependencies": {
     "lodash": "~1.1.1",
     "socket.io-client": "~0.9.11",
-    "socket.io": "~0.9.14"
+    "socket.io": "~0.9.14",
+    "forever-monitor": "~1.1.0"
   },
   "devDependencies": {},
   "scripts": {
