@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <title>HTML5 Game Development - Lesson 7 | Script Tutorials</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="../../js/remoteall.js"></script>
+
+        <!--CHECK socket.io.js SERVER-->
+        <script src="http://remoteall.org:8888/socket.io/socket.io.js"></script>
+        <script src="../../js/config.js"></script>
+
+
+        <script src="js/game.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function () {
+                var rc_host = REMOTE_ALL_CONFIG.host.protocol + '://' + REMOTE_ALL_CONFIG.host.domain + ':' + REMOTE_ALL_CONFIG.host.port;
+                var rc_url = '../client_and_rc/rc/rc.html#app=' + REMOTE_ALL_CONFIG.appId + '&session_id=' + REMOTE_ALL_CONFIG.uniqueSessionId + '&host=' + rc_host + '&type=js';
+                $('#qr').attr('src', '/qr.php?url=' + encodeURIComponent(rc_url));
+                //JS RC ON
+                $('#turn_rc_on').click(function () {
+                    window.open(rc_url, 'rc', "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=500,height=250");
+                    return false;
+                })
+            })
+        </script>
+
+        <div class="container">
+            <canvas id="scene" width="800" height="600"></canvas>
+        </div>
+
+        <div id="description">Turn <a href="#" id="turn_rc_on">JS RC</a> or <a href="#" id="turn_post_rc_on">POST RC</a>
+            on to control arconoid</div>
+    </body>
+    </body>
+</html>

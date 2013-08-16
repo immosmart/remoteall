@@ -52,18 +52,18 @@ img {
     top: 151px;
     width: 100%;
     background: #FFF7ED;
-    height: 750px;
+    height: 550px;
 }
 
 #description {
-    width: 350px;
+    width: 750px;
     vertical-align: middle;
     height: 400px;
     top: 100px;
 }
 
 #text_desc {
-    margin-top: 350px;
+    margin-top: 155px;
 }
 
 #square {
@@ -78,7 +78,7 @@ img {
     height: 100px;
     border-top: dashed 1px #777;
     background: #FFEFD5;
-    top: 900px;
+    top: 700px;
     text-align: center;
     padding-top: 20px;
     color: #777;
@@ -90,15 +90,8 @@ img {
     text-decoration: none;
     color: #777;
 }
-.container{
-    position: absolute;
-    left: 475px;
-    top: 50px;
-}
-
 
 #qr {
     width: 330px;
     height: 330px;
 }
-

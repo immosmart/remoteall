@@ -8,7 +8,7 @@
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="./example/client_and_rc/css/client_and_rc.css"/>
-<link rel="stylesheet" type="text/css" href="./css/remoteall2.css"/>
+<link rel="stylesheet" type="text/css" href="./css/remoteall.css"/>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="./js/remoteall.js"></script>
@@ -18,69 +18,10 @@
 <script src="./js/config.js"></script>
 
 
+<script src="./example/arconoid/js/game.js"></script>
+<script src="./example/arconoid/js/main.js"></script>
+
 <script>
-
-    REMOTE_ALL_CONFIG.uniqueSessionId = 'SecretSession_' + Math.random();
-    //REMOTE_ALL_CONFIG.app = 'myApp';
-
-    var ra = new remoteAll(REMOTE_ALL_CONFIG, function (context, args) {
-        // do nothing
-    });
-    var timer = null;
-    ra.on('recive_code', function (data,session_id) {
-
-        var diff = 0;
-        var direction = null;
-        console.log('Room: ' + session_id);
-        //console.log(data.event_name+' '+data.button_code);
-
-        switch (data.event_name) {
-            case 'button_down':
-                switch (data.button_code) {
-                    case 'DOWN':
-                    case 'RIGHT':
-                        diff = 2;
-                        break;
-                    case 'UP':
-                    case 'LEFT':
-                        diff = -2;
-                        break;
-                }
-
-                switch (data.button_code) {
-                    case 'DOWN':
-                    case 'UP':
-                        clearInterval(timer);
-                        timer = setInterval(function () {
-                            $('#square').offset({ top:$('#square').offset().top + diff})
-                        }, 20);
-                        break;
-                    case 'RIGHT':
-                    case 'LEFT':
-                        clearInterval(timer);
-                        timer = setInterval(function () {
-                            $('#square').offset({left:$('#square').offset().left + diff })
-                        }, 20);
-                        break;
-                }
-                break;
-            case 'button_up':
-
-                switch (data.button_code) {
-
-                    case 'DOWN':
-                    case 'RIGHT':
-                    case 'UP':
-                    case 'LEFT':
-                        if (timer)
-                            clearInterval(timer);
-                        break;
-                }
-
-                break;
-        }
-    })
-
     $(document).ready(function () {
         var rc_host = REMOTE_ALL_CONFIG.host.protocol + '://' + REMOTE_ALL_CONFIG.host.domain + ':' + REMOTE_ALL_CONFIG.host.port;
         var rc_url = './example/client_and_rc/rc/rc.html#app=' + REMOTE_ALL_CONFIG.appId + '&session_id=' + REMOTE_ALL_CONFIG.uniqueSessionId + '&host=' + rc_host + '&type=js';
@@ -91,7 +32,6 @@
             return false;
         })
     })
-
 </script>
 <div id="header">
     <a href="https://github.com/immosmart/remoteall" id="forkme"><img src="./images/forkme.png"></a>
@@ -108,12 +48,15 @@
 
 
 <div id="main_container">
-    <div id="square"><img src="images/ufo2.png"></div>
+
     <div id="description">
         <img src="images/qr-code.gif" id="qr" align="left">
 
-        <div id="text_desc">Turn <b>MOBILE RC</b> or <a href="#" id="turn_rc_on">JS RC</a> on to control this UFO &rarr;
+        <div id="text_desc">Turn <b>MOBILE RC</b> or <a href="#" id="turn_rc_on">JS RC</a> on to play game
         </div>
+    </div>
+    <div class="container">
+        <canvas id="scene" width="800" height="600"></canvas>
     </div>
 </div>
 
