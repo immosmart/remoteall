@@ -32,7 +32,7 @@ function Bricks(w, h, r, c, p) {
     this.c = c; // cols
     this.p = p; // padd
     this.objs;
-    this.colors = ['#9d9d9d', '#f80207', '#feff01', '#0072ff', '#fc01fc', '#03fe03']; // colors for rows
+    this.colors = ['#FC9E06','#FC9E06', '#FDC56A', '#FDC56A', '#FBD08B', '#FBD08B']; // colors for rows
 }
 
 // -------------------------------------------------------------
@@ -42,7 +42,7 @@ function clear() { // clear canvas function
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     // fill background
-    ctx.fillStyle = '#FFE3A6';
+    ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
@@ -50,7 +50,7 @@ function drawScene() { // main drawScene function
     clear(); // clear canvas
 
     // draw Ball (circle)
-    ctx.fillStyle = '#f66';
+    ctx.fillStyle = '#B5750F';
     ctx.beginPath();
     ctx.arc(oBall.x, oBall.y, oBall.r, 0, Math.PI * 2, true);
     ctx.closePath();
