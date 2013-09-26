@@ -89,6 +89,8 @@ Next code will be recieved by clients connected to session with `additionalSessi
 
 ## Example
 
+@see project site http://remoteall.org
+
 @see [example with JS and NonJS(POST) Remote Controller](https://github.com/immosmart/remoteall/blob/master/example/client_and_rc/)
 
 @see [example with code sender](https://github.com/immosmart/remoteall/blob/master/example/one_page_client_and_rc/index.html)
