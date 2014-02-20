@@ -4,10 +4,10 @@
   "description": "ERROR: No README.md file found!",
   "main": "remoteall_server.js",
   "dependencies": {
-    "lodash": "~1.1.1",
+    "lodash": "~2.4.1",
     "socket.io-client": "~0.9.11",
     "socket.io": "~0.9.14",
-    "forever-monitor": "~1.1.0"
+    "forever-monitor": "~1.2.3"
   },
   "devDependencies": {},
   "scripts": {
